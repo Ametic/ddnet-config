@@ -1,0 +1,22 @@
+var community = state("community")
+
+def auth(community) {
+	var cfg = "cfg/auth/" + community + ".secret.cfg"
+	var chai = "cfg/auth/" + community + ".secret.chai"
+	if (file_exists(cfg)) {
+		exec("exec " + cfg)
+	} else if (file_exists(chai)) {
+		exec("chai " + chai)
+	} else {
+		throw("No auth for community " + community)
+	}
+}
+
+print(community)
+
+if (community == "kog") {
+	auth("kog");
+}
+else if (community == "teecloud") {
+	auth("teecloud");
+}
