@@ -1,0 +1,2 @@
+var ServerName = state("server_name")
+exec("ec_discord_online_status " + ServerName)
